@@ -57,6 +57,23 @@ class App extends Component {
     })
   }
 
+  addPersonHandler = () => {
+    let persons = [...this.state.persons];
+    let flag = 0;
+    for(let i=0; i<persons.length; i++){
+      flag = flag + 1;
+    }
+    let person = {
+      name: "",
+      age: "",
+      id: flag + 1
+    }
+    persons.push(person);
+    this.setState({
+      persons: persons
+    })
+  }
+
   render() {
     let persons = null;
     if(this.state.showPersons){
@@ -81,6 +98,7 @@ class App extends Component {
         <h1>React Prac</h1>
         <button onClick={this.togglePersonsHandler}>Toggle</button>
         {persons}
+        <button onClick={this.addPersonHandler}>Add Person</button>
       </div>
     );
   }
